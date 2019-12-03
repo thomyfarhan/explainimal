@@ -50,16 +50,17 @@ class GameFragment : Fragment() {
     }
 
     private fun onFinish() {
-        val action = GameFragmentDirections.actionGameDestinationToScoreDestination(viewModel.score)
+        val action = GameFragmentDirections
+            .actionGameDestinationToScoreDestination(viewModel.score.value ?: 0)
         findNavController().navigate(action)
     }
 
     private fun updateWordText() {
-        binding.tvGameAnimal.text = viewModel.word
+        binding.tvGameAnimal.text = viewModel.word.value
     }
 
     private fun updateScoreText() {
-        binding.tvGameScore.text = viewModel.score.toString()
+        binding.tvGameScore.text = viewModel.score.value.toString()
     }
 
 }
