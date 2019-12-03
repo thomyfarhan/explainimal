@@ -55,6 +55,17 @@
             app:layout_constraintGuide_end="16dp"/>
 
         <Button
+            android:id="@+id/btn_game_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_main_bg"
+            app:layout_constraintStart_toEndOf="@+id/btn_game_skip"
+            app:layout_constraintEnd_toStartOf="@+id/btn_game_correct"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_game_margin_bottom"
+            android:text="Finish"/>
+
+        <Button
             android:id="@+id/btn_game_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
