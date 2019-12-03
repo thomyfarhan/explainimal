@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 
 import com.aesthomic.explainimal.R
 import com.aesthomic.explainimal.databinding.FragmentGameBinding
@@ -29,6 +30,7 @@ class GameFragment : Fragment() {
 
         binding.btnGameCorrect.setOnClickListener { onCorrect() }
         binding.btnGameSkip.setOnClickListener { onSkip() }
+        binding.btnGameFinish.setOnClickListener { onFinish() }
         updateWordText()
         updateScoreText()
 
@@ -45,6 +47,11 @@ class GameFragment : Fragment() {
         viewModel.onCorrect()
         updateWordText()
         updateScoreText()
+    }
+
+    private fun onFinish() {
+        val action = GameFragmentDirections.actionGameDestinationToScoreDestination()
+        findNavController().navigate(action)
     }
 
     fun updateWordText() {
