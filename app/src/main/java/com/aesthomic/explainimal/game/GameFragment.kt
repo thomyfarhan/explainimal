@@ -40,6 +40,10 @@ class GameFragment : Fragment() {
             binding.tvGameAnimal.text = newWord
         })
 
+        viewModel.eventGameFinish.observe(this, Observer { hasFinished ->
+            if (hasFinished) onFinish()
+        })
+
         return binding.root
     }
 
@@ -55,6 +59,7 @@ class GameFragment : Fragment() {
         val action = GameFragmentDirections
             .actionGameDestinationToScoreDestination(viewModel.score.value ?: 0)
         findNavController().navigate(action)
+        viewModel.onGameFinishComplete()
     }
 
 }

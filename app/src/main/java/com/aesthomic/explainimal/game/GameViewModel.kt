@@ -7,16 +7,19 @@ import com.aesthomic.explainimal.data.Animal
 import com.aesthomic.explainimal.data.AnimalData
 
 class GameViewModel: ViewModel() {
-    private val _word = MutableLiveData<String>()
-    private val _score = MutableLiveData<Int>()
+    private lateinit var listAnimals: MutableList<Animal>
 
+    private val _word = MutableLiveData<String>()
     val word: LiveData<String>
         get() = _word
 
+    private val _score = MutableLiveData<Int>()
     val score: LiveData<Int>
         get() = _score
 
-    private lateinit var listAnimals: MutableList<Animal>
+    private val _eventGameFinish = MutableLiveData<Boolean>()
+    val eventGameFinish: LiveData<Boolean>
+        get() = _eventGameFinish
 
     init {
         resetList()
@@ -32,9 +35,10 @@ class GameViewModel: ViewModel() {
 
     private fun nextWord() {
         if (listAnimals.isEmpty()) {
-            resetList()
+            onGameFinish()
+        } else {
+            _word.value = listAnimals.removeAt(0).name
         }
-        _word.value = listAnimals.removeAt(0).name
     }
 
     fun onCorrect() {
@@ -45,5 +49,13 @@ class GameViewModel: ViewModel() {
     fun onSkip() {
         _score.value = score.value?.minus(2)
         nextWord()
+    }
+
+    fun onGameFinish() {
+        _eventGameFinish.value = true
+    }
+
+    fun onGameFinishComplete() {
+        _eventGameFinish.value = false
     }
 }
