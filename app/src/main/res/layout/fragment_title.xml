@@ -10,9 +10,7 @@
 
         <TextView
             android:id="@+id/tv_title_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            style="@style/TextContent.Large.PrimaryColor"
             android:text="@string/game_name"
             app:layout_constraintBottom_toTopOf="@+id/tv_title_desc"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +20,7 @@
 
         <TextView
             android:id="@+id/tv_title_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextContent.Small"
             android:text="@string/game_desc"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +31,8 @@
             android:id="@+id/btn_title_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_main_bg"
+            android:textColor="@android:color/white"
             android:text="@string/title_play"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
