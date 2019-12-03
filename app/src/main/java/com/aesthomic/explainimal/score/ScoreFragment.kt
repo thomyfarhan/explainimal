@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 
 import com.aesthomic.explainimal.R
 import com.aesthomic.explainimal.databinding.FragmentScoreBinding
@@ -34,6 +35,18 @@ class ScoreFragment : Fragment() {
         viewModel.score.observe(this, Observer { score ->
             binding.tvScoreScore.text = score.toString()
         })
+
+        viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
+            if (playAgain) {
+                findNavController().navigate(ScoreFragmentDirections
+                    .actionScoreDestinationToGameDestination())
+                viewModel.onPlayAgainComplete()
+            }
+        })
+
+        binding.btnScorePlayAgain.setOnClickListener {
+            viewModel.onPlayAgain()
+        }
 
         return binding.root
     }
