@@ -27,7 +27,32 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProviders.of(this)
             .get(GameViewModel::class.java)
 
+        binding.btnGameCorrect.setOnClickListener { onCorrect() }
+        binding.btnGameSkip.setOnClickListener { onSkip() }
+        updateWordText()
+        updateScoreText()
+
         return binding.root
+    }
+
+    private fun onSkip() {
+        viewModel.onSkip()
+        updateWordText()
+        updateScoreText()
+    }
+
+    private fun onCorrect() {
+        viewModel.onCorrect()
+        updateWordText()
+        updateScoreText()
+    }
+
+    fun updateWordText() {
+        binding.tvGameAnimal.text = viewModel.word
+    }
+
+    fun updateScoreText() {
+        binding.tvGameScore.text = viewModel.score.toString()
     }
 
 }
