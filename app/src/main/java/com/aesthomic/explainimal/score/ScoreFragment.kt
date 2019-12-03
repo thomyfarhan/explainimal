@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.aesthomic.explainimal.R
@@ -30,7 +31,9 @@ class ScoreFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(ScoreViewModel::class.java)
 
-        binding.tvScoreScore.text = viewModel.score.toString()
+        viewModel.score.observe(this, Observer { score ->
+            binding.tvScoreScore.text = score.toString()
+        })
 
         return binding.root
     }
