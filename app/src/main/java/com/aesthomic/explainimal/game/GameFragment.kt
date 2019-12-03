@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 
@@ -31,36 +32,30 @@ class GameFragment : Fragment() {
         binding.btnGameCorrect.setOnClickListener { onCorrect() }
         binding.btnGameSkip.setOnClickListener { onSkip() }
         binding.btnGameFinish.setOnClickListener { onFinish() }
-        updateWordText()
-        updateScoreText()
+
+        viewModel.score.observe(this, Observer { newScore ->
+            binding.tvGameScore.text = newScore.toString()
+        })
+
+        viewModel.word.observe(this, Observer { newWord ->
+            binding.tvGameAnimal.text = newWord
+        })
 
         return binding.root
     }
 
     private fun onSkip() {
         viewModel.onSkip()
-        updateWordText()
-        updateScoreText()
     }
 
     private fun onCorrect() {
         viewModel.onCorrect()
-        updateWordText()
-        updateScoreText()
     }
 
     private fun onFinish() {
         val action = GameFragmentDirections
             .actionGameDestinationToScoreDestination(viewModel.score.value ?: 0)
         findNavController().navigate(action)
-    }
-
-    private fun updateWordText() {
-        binding.tvGameAnimal.text = viewModel.word.value
-    }
-
-    private fun updateScoreText() {
-        binding.tvGameScore.text = viewModel.score.value.toString()
     }
 
 }
