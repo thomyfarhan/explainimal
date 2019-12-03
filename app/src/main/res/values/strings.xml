@@ -5,4 +5,6 @@
     <string name="title_play">Play</string>
     <string name="btn_game_skip_text">Skip</string>
     <string name="btn_game_correct_text">Correct</string>
+    <string name="btn_score_play_again">Play Again</string>
+    <string name="tv_score_you_answered_text">You Answered</string>
 </resources>
