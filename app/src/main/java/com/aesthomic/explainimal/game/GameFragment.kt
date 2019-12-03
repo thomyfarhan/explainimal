@@ -31,7 +31,6 @@ class GameFragment : Fragment() {
 
         binding.btnGameCorrect.setOnClickListener { onCorrect() }
         binding.btnGameSkip.setOnClickListener { onSkip() }
-        binding.btnGameFinish.setOnClickListener { onFinish() }
 
         viewModel.score.observe(this, Observer { newScore ->
             binding.tvGameScore.text = newScore.toString()
