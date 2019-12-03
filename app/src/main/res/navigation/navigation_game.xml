@@ -9,6 +9,16 @@
         android:id="@+id/title_destination"
         android:name="com.aesthomic.explainimal.title.TitleFragment"
         android:label="@string/game_name"
-        tools:layout="@layout/fragment_title"/>
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_title_destination_to_game_destination"
+            app:destination="@id/game_destination" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/game_destination"
+        android:name="com.aesthomic.explainimal.game.GameFragment"
+        android:label="@string/game_name"
+        tools:layout="@layout/fragment_game"/>
 
 </navigation>
