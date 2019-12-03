@@ -19,6 +19,22 @@
         android:id="@+id/game_destination"
         android:name="com.aesthomic.explainimal.game.GameFragment"
         android:label="@string/game_name"
-        tools:layout="@layout/fragment_game"/>
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_game_destination_to_score_destination"
+            app:destination="@id/score_destination"
+            app:popUpTo="@+id/title_destination" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/score_destination"
+        android:name="com.aesthomic.explainimal.score.ScoreFragment"
+        android:label="@string/game_name"
+        tools:layout="@layout/fragment_score">
+        <action
+            android:id="@+id/action_score_destination_to_game_destination"
+            app:destination="@id/game_destination"
+            app:popUpTo="@+id/title_destination" />
+    </fragment>
 
 </navigation>
