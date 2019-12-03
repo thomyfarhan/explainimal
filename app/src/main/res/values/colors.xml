@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorPrimaryLight">#C5CAE9</color>
     <color name="colorAccent">#FFC107</color>
+    <color name="colorSkipButton">#F44336</color>
+    <color name="colorSkipButtonDark">#D32F2F</color>
+    <color name="colorSkipButtonLight">#FFCDD2</color>
+    <color name="colorCorrectButton">#4CAF50</color>
+    <color name="colorCorrectButtonDark">#388E3C</color>
+    <color name="colorCorrectButtonLight">#C8E6C9</color>
 </resources>
