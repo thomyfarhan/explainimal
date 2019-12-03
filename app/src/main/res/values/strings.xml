@@ -3,4 +3,6 @@
     <string name="game_name">Explainimal</string>
     <string name="game_desc">Say the animal name described by your friend!</string>
     <string name="title_play">Play</string>
+    <string name="btn_game_skip_text">Skip</string>
+    <string name="btn_game_correct_text">Correct</string>
 </resources>
