@@ -68,6 +68,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline_game_margin_bottom"
             app:layout_constraintStart_toStartOf="@+id/guideline_game_margin_start"
+            android:onClick="@{() -> viewModel.onSkip()}"
             android:text="@string/btn_game_skip_text"/>
 
         <Button
@@ -78,6 +79,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_game_margin_end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline_game_margin_bottom"
+            android:onClick="@{() -> viewModel.onCorrect()}"
             android:text="@string/btn_game_correct_text"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

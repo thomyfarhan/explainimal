@@ -31,9 +31,6 @@ class GameFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.btnGameCorrect.setOnClickListener { onCorrect() }
-        binding.btnGameSkip.setOnClickListener { onSkip() }
-
         viewModel.score.observe(this, Observer { newScore ->
             binding.tvGameScore.text = newScore.toString()
         })
@@ -47,14 +44,6 @@ class GameFragment : Fragment() {
         })
 
         return binding.root
-    }
-
-    private fun onSkip() {
-        viewModel.onSkip()
-    }
-
-    private fun onCorrect() {
-        viewModel.onCorrect()
     }
 
     private fun onFinish() {
