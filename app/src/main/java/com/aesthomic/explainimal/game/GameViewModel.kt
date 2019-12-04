@@ -13,6 +13,7 @@ import com.aesthomic.explainimal.data.AnimalData
 private const val DONE = 0L
 private const val ONE_SECOND = 1000L
 private const val COUNTDOWN_TIME = 60000L
+private const val COUNTDOWN_PANIC_TIME = 10000L
 
 // Constant variables for buzz
 private val CORRECT_BUZZ_PATTERN = longArrayOf(100, 100, 100, 100, 100, 100)
@@ -62,11 +63,15 @@ class GameViewModel: ViewModel() {
         timer = object: CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
             override fun onFinish() {
                 currentTime.value = DONE
+                _eventBuzz.value = BuzzType.GAME_OVER
                 onGameFinish()
             }
 
             override fun onTick(millisUntilFinished: Long) {
                 currentTime.value = millisUntilFinished/ONE_SECOND
+                if (millisUntilFinished <= COUNTDOWN_PANIC_TIME) {
+                    _eventBuzz.value = BuzzType.COUNTDOWN_PANIC
+                }
             }
 
         }
@@ -89,6 +94,7 @@ class GameViewModel: ViewModel() {
 
     fun onCorrect() {
         _score.value = score.value?.plus(1)
+        _eventBuzz.value = BuzzType.CORRECT
         nextWord()
     }
 
