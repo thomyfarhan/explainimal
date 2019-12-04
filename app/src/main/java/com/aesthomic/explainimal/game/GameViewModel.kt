@@ -1,10 +1,15 @@
 package com.aesthomic.explainimal.game
 
+import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aesthomic.explainimal.data.Animal
 import com.aesthomic.explainimal.data.AnimalData
+
+private const val DONE = 0L
+private const val ONE_SECOND = 1000L
+private const val COUNTDOWN_TIME = 60000L
 
 class GameViewModel: ViewModel() {
     private lateinit var listAnimals: MutableList<Animal>
@@ -21,10 +26,30 @@ class GameViewModel: ViewModel() {
     val eventGameFinish: LiveData<Boolean>
         get() = _eventGameFinish
 
+    private val _currentTime = MutableLiveData<Long>()
+    val currentTime: LiveData<Long>
+        get() = _currentTime
+
+    private val timer: CountDownTimer
+
     init {
         resetList()
         nextWord()
         _score.value = 0
+
+        timer = object: CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+            override fun onFinish() {
+                _currentTime.value = DONE
+                onGameFinish()
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                _currentTime.value = millisUntilFinished/ONE_SECOND
+            }
+
+        }
+
+        timer.start()
     }
 
     private fun resetList() {
@@ -35,10 +60,9 @@ class GameViewModel: ViewModel() {
 
     private fun nextWord() {
         if (listAnimals.isEmpty()) {
-            onGameFinish()
-        } else {
-            _word.value = listAnimals.removeAt(0).name
+            resetList()
         }
+        _word.value = listAnimals.removeAt(0).name
     }
 
     fun onCorrect() {
@@ -57,5 +81,10 @@ class GameViewModel: ViewModel() {
 
     fun onGameFinishComplete() {
         _eventGameFinish.value = false
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        timer.cancel()
     }
 }
