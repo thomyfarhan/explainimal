@@ -46,10 +46,6 @@ class ScoreFragment : Fragment() {
             }
         })
 
-        binding.btnScorePlayAgain.setOnClickListener {
-            viewModel.onPlayAgain()
-        }
-
         return binding.root
     }
     

@@ -49,6 +49,7 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline_score_margin_bottom"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> viewModel.onPlayAgain()}"
             android:textColor="@android:color/white"
             android:text="@string/btn_score_play_again"/>
 
