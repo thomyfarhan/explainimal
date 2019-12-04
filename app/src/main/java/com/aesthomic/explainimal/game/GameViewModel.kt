@@ -111,6 +111,10 @@ class GameViewModel: ViewModel() {
         _eventGameFinish.value = false
     }
 
+    fun onBuzzComplete() {
+        _eventBuzz.value = BuzzType.NO_BUZZ
+    }
+
     override fun onCleared() {
         super.onCleared()
         timer.cancel()
