@@ -30,14 +30,7 @@ class GameFragment : Fragment() {
             .get(GameViewModel::class.java)
 
         binding.viewModel = viewModel
-
-        viewModel.score.observe(this, Observer { newScore ->
-            binding.tvGameScore.text = newScore.toString()
-        })
-
-        viewModel.word.observe(this, Observer { newWord ->
-            binding.tvGameAnimal.text = newWord
-        })
+        binding.lifecycleOwner = this
 
         viewModel.eventGameFinish.observe(this, Observer { hasFinished ->
             if (hasFinished) onFinish()

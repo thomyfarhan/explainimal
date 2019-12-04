@@ -7,4 +7,5 @@
     <string name="btn_game_correct_text">Correct</string>
     <string name="btn_score_play_again">Play Again</string>
     <string name="tv_score_you_answered_text">You Answered</string>
+    <string name="game_score_text">Score: %1$d</string>
 </resources>

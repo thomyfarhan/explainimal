@@ -28,6 +28,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_game_timer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{@string/game_score_text(viewModel.score)}"
             tools:text="Score: 0"/>
 
         <TextView
@@ -37,6 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{viewModel.word}"
             tools:text="Octopus"/>
 
         <androidx.constraintlayout.widget.Guideline
