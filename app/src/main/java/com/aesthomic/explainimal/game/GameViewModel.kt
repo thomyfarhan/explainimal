@@ -21,7 +21,7 @@ private val GAME_OVER_BUZZ_PATTERN = longArrayOf(0, 2000)
 private val NO_BUZZ_PATTERN = longArrayOf(0)
 
 class GameViewModel: ViewModel() {
-    enum class BuzzTypes(val pattern: LongArray) {
+    enum class BuzzType(val pattern: LongArray) {
         CORRECT(CORRECT_BUZZ_PATTERN),
         GAME_OVER(GAME_OVER_BUZZ_PATTERN),
         COUNTDOWN_PANIC(PANIC_BUZZ_PATTERN),
@@ -41,6 +41,10 @@ class GameViewModel: ViewModel() {
     private val _eventGameFinish = MutableLiveData<Boolean>()
     val eventGameFinish: LiveData<Boolean>
         get() = _eventGameFinish
+
+    private val _eventBuzz = MutableLiveData<BuzzType>()
+    val eventBuzz: LiveData<BuzzType>
+        get() = _eventBuzz
 
     private val currentTime = MutableLiveData<Long>()
 
