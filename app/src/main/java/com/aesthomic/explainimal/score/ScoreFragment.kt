@@ -32,6 +32,8 @@ class ScoreFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(ScoreViewModel::class.java)
 
+        binding.viewModel = viewModel
+
         viewModel.score.observe(this, Observer { score ->
             binding.tvScoreScore.text = score.toString()
         })
