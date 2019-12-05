@@ -12,6 +12,10 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="TextContent.SuperLarge">
+        <item name="android:textSize">64sp</item>
+    </style>
+
     <style name="TextContent.Large">
         <item name="android:textSize">34sp</item>
     </style>

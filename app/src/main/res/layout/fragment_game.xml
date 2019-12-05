@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/tv_game_animal"
-            style="@style/TextContent.Large.PrimaryColor"
+            style="@style/TextContent.SuperLarge"
             app:layout_constraintBottom_toTopOf="@+id/tv_game_score"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
