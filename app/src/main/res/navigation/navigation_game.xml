@@ -15,23 +15,22 @@
             app:destination="@id/game_destination"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"/>
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/title_destination"/>
     </fragment>
 
     <fragment
         android:id="@+id/game_destination"
         android:name="com.aesthomic.explainimal.game.GameFragment"
-        android:label="@string/game_name"
-        tools:layout="@layout/fragment_game">
+        android:label="@string/game_name">
         <action
             android:id="@+id/action_game_destination_to_score_destination"
             app:destination="@id/score_destination"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
-            app:popUpTo="@+id/title_destination" />
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -42,11 +41,18 @@
         <action
             android:id="@+id/action_score_destination_to_game_destination"
             app:destination="@id/game_destination"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@+id/title_destination" />
+        <action
+            android:id="@+id/action_score_destination_to_title_destination"
+            app:destination="@id/title_destination"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popUpTo="@+id/title_destination"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="score"
             app:argType="integer" />
