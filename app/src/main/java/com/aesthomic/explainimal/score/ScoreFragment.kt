@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -43,7 +45,19 @@ class ScoreFragment : Fragment() {
             }
         })
 
+        // Navigate to Title Fragment when back button clicked
+        // I added these lines to make animation transition in navigation works
+        // popUpTo TitleFragment in GameFragment Action was deleted and exchanged by this
+        requireActivity().onBackPressedDispatcher
+            .addCallback(this, object: OnBackPressedCallback(true) {
+
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(ScoreFragmentDirections
+                        .actionScoreDestinationToTitleDestination())
+                }
+            })
+
         return binding.root
     }
-    
+
 }
